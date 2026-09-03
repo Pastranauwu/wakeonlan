@@ -1,0 +1,17 @@
+[Unit]
+Description=Wake-on-LAN Alexa Device Emulator
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/wakeup -mac AA:BB:CC:DD:EE:FF -name "Device"
+Restart=on-failure
+RestartSec=10s
+User=wakeup
+Group=wakeup
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
